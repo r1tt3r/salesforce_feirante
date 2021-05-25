@@ -1,0 +1,109 @@
+<isdecorate template="/common/layout/page">
+  <div class="text-center mt-3 mb-3">
+    <h1>${Resource.msg('title.feirante.show', 'forms', null)}</h1>
+    <h2>${Resource.msg('subtitle.feirante.show', 'forms', null)}</h2>
+  </div>
+
+  <form action="${pdict.actionURL}" class="feirante-form" method="POST" <isprint
+    value="${pdict.feiranteForm.attributes}" encoding="off" />>
+
+  <isif condition="${pdict.user}">
+    <input type="hidden" value="${pdict.user.customerNo}" class="form-control" id="userId" <isprint
+      value="${pdict.feiranteForm.userId.attributes}" encoding="off" />
+    autocomplete="userId"/>
+
+      <input type="hidden" value="${pdict.data.feirante}" class="form-control" id="feirante" <isprint
+      value="${pdict.feiranteForm.feirante.attributes}" encoding="off" />
+    autocomplete="userId"/>
+  </isif>
+  <!-- Name -->
+  <div class="container feirante">
+    <div class="row">
+      <!-- First Name -->
+      <div class="col-6">
+        <div class="form-group
+                  ${pdict.feiranteForm.firstname.mandatory === true ? 'required' : ''}">
+          <label class="form-control-label" for="firstname">
+            <isprint value="${pdict.feiranteForm.firstname.label}" encoding="htmlcontent" />
+          </label>
+          <input value="${pdict.user ? pdict.user.firstName : ''}" type="text" class="form-control" id="firstname"
+            <isprint value="${pdict.feiranteForm.firstname.attributes}" encoding="off" />
+          autocomplete="given-name">
+          <div class="invalid-feedback"></div>
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group
+                  ${pdict.feiranteForm.lastname.mandatory === true ? 'required' : ''}">
+          <label class="form-control-label" for="lastname">
+            <isprint value="${pdict.feiranteForm.lastname.label}" encoding="htmlcontent" />
+          </label>
+          <input value="${pdict.user ? pdict.user.lastName : ''}" type="text" class="form-control" id="lastname"
+            <isprint value="${pdict.feiranteForm.lastname.attributes}" encoding="off" />
+          autocomplete="given-name">
+          <div class="invalid-feedback"></div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group
+          ${pdict.feiranteForm.email.mandatory === true ? 'required' : ''}
+          ${pdict.feiranteForm.email.htmlName}">
+          <label class="form-control-label" for="email">
+            ${Resource.msg('field.customer.email', 'checkout', null)}
+          </label>
+          <input value="${pdict.user ? pdict.user.email : ''}" type="email" class="form-control email" id="email"
+            <isprint value="${pdict.feiranteForm.email.attributes}" encoding="off" />
+          aria-describedby="emailInvalidMessage" />
+          <div class="invalid-feedback" id="emailInvalidMessage"></div>
+        </div>
+
+        <!-- Store Name -->
+        <div class="form-group
+          ${pdict.feiranteForm.storename.mandatory === true ? 'required' : ''}">
+          <label class="form-control-label" for="storename">
+            ${Resource.msg('field.feirantes.storename', 'forms', null)}
+          </label>
+          <input value="${pdict.data ? pdict.data.storename : ''}" type="string" class="form-control" id="storename" <isprint
+            value="${pdict.feiranteForm.storename.attributes}" encoding="off" />
+          autocomplete="storename"/>
+          <div class="invalid-feedback"></div>
+        </div>
+
+        <!-- City -->
+        <div class="form-group
+          ${pdict.feiranteForm.city.mandatory === true ? 'required' : ''}">
+          <label class="form-control-label" for="phone">
+            ${Resource.msg('field.feirantes.city', 'forms', null)}
+          </label>
+          <input value="${pdict.data ? pdict.data.city : ''}" type="string" class="form-control" id="city" <isprint
+            value="${pdict.feiranteForm.city.attributes}" encoding="off" />
+          autocomplete="city"/>
+          <div class="invalid-feedback"></div>
+        </div>
+
+      </div>
+      <div class="col-6">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-5">${Resource.msg('feirante.status', 'feirante', null)}</h1>
+            <p class="lead"><b>${pdict.data ? Resource.msg('feirante.already', 'feirante', null) : Resource.msg('feirante.tobe', 'feirante', null)}</b></p>
+            <p class="lead">
+              ${pdict.data ? Resource.msg('feirante.already.msg', 'feirante', null) : Resource.msg('feirante.already.msg', 'feirante', null)}
+            </p>
+            <isif condition="${pdict.data}">
+              <button type="button" onclick="location.href = '${pdict.deleteURL}';" class="btn btn-danger">${Resource.msg('feirante.excluir.cadastro', 'feirante', null)}</button>
+            </isif>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Cancel and Save Buttons -->
+    <div class="row">
+      <div class="col-6">
+        <button type="submit" name="save" class="btn btn-save btn-block btn-primary">${Resource.msg('button.feirantes', 'forms', null)}</button>
+      </div>
+    </div>
+  </div>
+  </form>
+
+</isdecorate>

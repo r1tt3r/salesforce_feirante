@@ -1,0 +1,9 @@
+<isdecorate template="/common/layout/page">
+  <div class="container text-center">
+    <h1 class="mt-2 mb-2">${Resource.msg('feirante.success.h1', 'feirante', null)}</h1>
+    ${Resource.msg('feirante.success.p', 'feirante', null)}
+    <div class="mt-5">
+      <button onClick="location.href = '/on/demandware.store/Sites-ACNOrganicFood-Site/default/Feirante-Show';">${Resource.msg('feirante.success.button', 'feirante', null)}</button>
+    </div>
+  </div>
+</isdecorate>
